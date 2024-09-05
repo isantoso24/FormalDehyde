@@ -2,7 +2,7 @@
 title: "Formaldehyde analysis with TRI and NEI"
 author: "M Ilham AR Santoso"
 date: "09/05/2024"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
