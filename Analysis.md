@@ -103,4 +103,4 @@ print(total_sum_NEI_air)
     ##    <dbl>
     ## 1 24956.
 
-The total stack air in TRI is 2.4955924^{4} tons
+The total emission in NEI is 2.4955924^{4} tons

@@ -65,4 +65,4 @@ total_sum_NEI_air <- NEI %>%
 # View the result
 print(total_sum_NEI_air)
 ```
-The total stack air in TRI is `r total_sum_NEI_air` tons
+The total emission in NEI is `r total_sum_NEI_air` tons
