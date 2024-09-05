@@ -1,0 +1,68 @@
+---
+title: "Formaldehyde analysis with TRI and NEI"
+author: "M Ilham AR Santoso"
+date: "09/05/2024"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+```{r install-packages}
+#install.packages("readxl")
+library(readxl)
+#install.packages("dplyr")
+library(dplyr)
+#install.packages("readr")
+library(readr)
+#install.packages("stringr")
+library(stringr)
+#install.packages("tidyr")
+library(tidyr)
+#install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+NEI <- read_excel("~/FormalDehyde/Formaldehyde NEI.xlsx")
+TRI <- read_csv("~/FormalDehyde/2020_us-TRI basic data.csv")
+```
+Filtering the TRI data to match the Chemical column into only Formaldehyde
+```{r}
+TRI <- TRI %>%
+  filter(str_detect(str_replace_all(`37. CHEMICAL`, " ", ""), regex("formaldehyde", ignore_case = TRUE)))
+```
+
+
+```{r}
+TRI$`51. 5.1 - FUGITIVE AIR` <- as.double(TRI$`51. 5.1 - FUGITIVE AIR`)
+
+total_sum_fugitive_air <- TRI %>%
+  summarise(Total = sum(`51. 5.1 - FUGITIVE AIR`, na.rm = TRUE))
+
+# View the result
+print(total_sum_fugitive_air)
+```
+The total fugitive air in TRI is `r total_sum_fugitive_air` pounds or `r total_sum_fugitive_air / 2000` Tons
+
+```{r}
+TRI$`52. 5.2 - STACK AIR` <- as.double(TRI$`52. 5.2 - STACK AIR`)
+
+total_sum_stack_air <- TRI %>%
+  summarise(Total = sum(`52. 5.2 - STACK AIR`, na.rm = TRUE))
+
+# View the result
+print(total_sum_stack_air)
+```
+
+The total stack air in TRI is `r total_sum_stack_air` pounds or `r total_sum_stack_air / 2000` Tons
+
+```{r}
+total_sum_NEI_air <- NEI %>%
+  summarise(Total = sum(`Emissions (Tons)`, na.rm = TRUE))
+
+# View the result
+print(total_sum_NEI_air)
+```
+The total stack air in TRI is `r total_sum_NEI_air` tons
