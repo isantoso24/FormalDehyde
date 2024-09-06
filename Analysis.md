@@ -104,3 +104,7 @@ print(total_sum_NEI_air)
     ## 1 24956.
 
 The total emission in NEI is 2.4955924^{4} tons
+
+To see the details of each data please see below: the total number of
+facilities in TRI data are 727 and the total number of facility in NEI
+data are 44082

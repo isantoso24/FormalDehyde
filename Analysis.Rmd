@@ -66,3 +66,8 @@ total_sum_NEI_air <- NEI %>%
 print(total_sum_NEI_air)
 ```
 The total emission in NEI is `r total_sum_NEI_air` tons
+
+
+To see the details of each data please see below:
+the total number of facilities in TRI data are `r nrow(TRI)` and the total number of facility in NEI data are `r nrow(NEI)`
+
