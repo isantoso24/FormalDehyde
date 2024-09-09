@@ -31,7 +31,9 @@ TRI <- read_csv("~/FormalDehyde/2020_us-TRI basic data.csv")
 
 ```{r}
 NEI <- NEI %>%
-  mutate(`Emission (Pounds)` = `Emissions (Tons)` * 2000)
+  mutate(`Emission (Pounds)` = `Emissions (Tons)` * 2000) %>%
+  mutate(`Lat/Lon` = gsub("\\[|\\]", "", `Lat/Lon`)) %>%
+  separate(`Lat/Lon`, into = c("lon", "lat"), sep = ",")
 ```
 
 ```{r}
