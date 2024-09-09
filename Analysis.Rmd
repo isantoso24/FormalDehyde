@@ -28,6 +28,18 @@ library(ggplot2)
 NEI <- read_excel("~/FormalDehyde/Formaldehyde NEI.xlsx")
 TRI <- read_csv("~/FormalDehyde/2020_us-TRI basic data.csv")
 ```
+
+```{r}
+NEI <- NEI %>%
+  mutate(`Emission (Pounds)` = `Emissions (Tons)` * 2000)
+```
+
+```{r}
+write.csv(NEI, "~/FormalDehyde/NEI Formaldehyde.csv", row.names = FALSE)
+```
+
+
+
 Filtering the TRI data to match the Chemical column into only Formaldehyde
 ```{r}
 TRI <- TRI %>%
